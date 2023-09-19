@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 def magic_string():
     s = ""
     for i in range(1, n + 1):
