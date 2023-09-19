@@ -1,19 +1,25 @@
 #!/usr/bin/python3
+"""Defines a function that multiplies 2 matrices by using the module NumPy.
+
+Attributes:
+    m_a (matrix)
+    m_b (matrix)
+"""
+
 
 import numpy as np
 
+
 def lazy_matrix_mul(m_a, m_b):
-    try:
-        # Convert input matrices to NumPy arrays
-        m_a = np.array(m_a)
-        m_b = np.array(m_b)
+    """Multiplies two matrices using numpy
 
-        # Perform matrix multiplication using dot product
-        result = np.dot(m_a, m_b)
+    Args:
+        m_a (matrix): first matrix
+        m_b (matrix): second matrix
 
-        return result.tolist()  # Convert the result back to a regular Python list
-
-    except ValueError as ve:
-        raise ValueError("m_a and m_b can't be multiplied") from ve
-    except Exception as e:
-        raise type(e)("An error occurred during matrix multiplication") from e
+    Returns:
+        matrix: the product of the two matrices.
+    """
+    # m_a = ([1, 2], [3, 4])
+    # m_b = [[1, 2], [3, 4]]
+    return np.matmul(m_a, m_b)
