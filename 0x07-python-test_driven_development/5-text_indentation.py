@@ -1,18 +1,26 @@
 #!/usr/bin/python3
+"""Defines a function that prints a text with 2 new lines after each,
+of these characters: . ? and :
+Attributes:
+    text_indentation: function that prints a text with specific conditions
+"""
+
 
 def text_indentation(text):
+    """Prints a text with 2 new lines after .?: characters.
+
+    Args:
+        text (str): string to be examined.
+
+    Raises:
+        TypeError: If text is not of type str.
+    """
+
     if not isinstance(text, str):
-        raise TypeError("text must be a string")  
-    """ Raise an exception if text is not a string """
+        raise TypeError("text must be a string")
 
-    """ Define the punctuation characters that trigger indentation """
-    punctuation_chars = [".", "?", ":"]
+    for delim in ".:?":
+        text = (delim + "\n\n").join(
+            [line.strip(" ") for line in text.split(delim)])
 
-    """ Loop through each character in the text """
-    for char in text:
-        """ Print the character, followed by two new lines if it's a punctuation character """
-        if char in punctuation_chars:
-            print(char + "\n\n")
-        else:
-            print(char, end="")  
-            """ Print the character without a newline character """
+    print(text, end="")
