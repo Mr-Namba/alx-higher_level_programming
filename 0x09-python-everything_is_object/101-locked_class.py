@@ -1,20 +1,19 @@
 #!/usr/bin/python3
+"""Defines a class LockedClass"""
+
+
 class LockedClass:
-    def __setattr__(self, name, value):
-        if name == 'first_name':
-            self.__dict__[name] = value
-        elif name != 'first_name' and hasattr(self, 'first_name') == False:
-            raise AttributeError(f"'LockedClass' object has no attribute '{name}'")
-        else:
-            raise AttributeError(f"Cannot set attribute '{name}'")
+    """
+    Prevents the user from dynamically creating new instance attributes,
+    except if the new instance attribute is called first_name.
 
-# Example Usage:
-# Uncomment and run the following code to test the class
+    Attributes:
+        first_name (str): first name of something.
+    """
 
-# obj = LockedClass()
-# obj.first_name = 'John'
-# print(obj.first_name)  # Output: John
+    __slots__ = ["first_name"]
 
-# Uncommenting the line below would raise an AttributeError
-# obj.last_name = 'Doe'
+    def __init__(self):
+        """Creates new instances of Locked Class."""
 
+        self.first_name = "first_name"
